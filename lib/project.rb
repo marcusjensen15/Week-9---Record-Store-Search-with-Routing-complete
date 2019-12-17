@@ -3,6 +3,7 @@ class Album
 
   @@albums = {}
   @@total_rows = 0
+  @@sold_albums = {}
 
   def initialize(name, id, year, genre, artist)
     @name = name
@@ -10,15 +11,30 @@ class Album
     @year = year
     @genre = genre
     @artist = artist
+    @sold = false
   end
 
   def self.all
     @@albums.values()
   end
 
+
+  def self.sold_albums
+    @@sold_albums.values()
+  end
+
+
   def self.sort
     @@albums.values.sort_by { | val| val.name}
 
+  end
+
+  def sold
+
+      @@sold_albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist)
+
+
+  
   end
 
   def save

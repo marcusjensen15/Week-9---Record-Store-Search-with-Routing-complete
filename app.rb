@@ -12,6 +12,8 @@ end
 get('/') do
   @sort = Album.sort
   @albums = Album.all
+  @sold = Album.sold_albums
+
   erb(:albums)
 end
 
@@ -22,6 +24,7 @@ get('/albums') do
 else
   @sort = Album.sort
   @albums = Album.all
+  @sold = Album.sold_albums
   erb(:albums)
   end
 end
@@ -36,6 +39,7 @@ get('/albums/:id') do
 end
 
 ##this is new
+
 
 
 
@@ -56,22 +60,67 @@ post('/albums') do
   album.save()
   @albums = Album.all()
   @sort = Album.sort
+  @sold = Album.sold_albums
+
   erb(:albums)
 end
 
+patch('/update/:id')do
+@album = Album.find(params[:id].to_i())
+@album.sold
+
+@albums = Album.all
+@sort = Album.sort
+@sold = Album.sold_albums
+
+erb(:albums)
+end
+
+get('/update/:id')do
+
+
+@albums = Album.all
+@sort = Album.sort
+@sold = Album.sold_albums
+
+erb(:albums)
+end
 
 
 patch('/albums/:id') do
+
+  # if params["sold"]
+    # @album = Album.find(params[:id].to_i())
+    # @album.sold
+    # @albums = Album.all
+    # @sort = Album.sort
+    # @sold = Album.sold_albums
+
+
+    # erb(:albums)
+
+
+
+# else
   @album = Album.find(params[:id].to_i())
   @album.update(params[:name])
+  @album.sold
+
   @albums = Album.all
+  @sort = Album.sort
+  @sold = Album.sold_albums
+
   erb(:albums)
+# end
 end
 
 delete('/albums/:id') do
   @album = Album.find(params[:id].to_i())
   @album.delete()
   @albums = Album.all
+  @sort = Album.sort
+  @sold = Album.sold_albums
+
   erb(:albums)
 end
 

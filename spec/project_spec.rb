@@ -25,13 +25,22 @@ require('project')
 #     expect(Album.all()).to(eq([]))
 #   end
 # end
-describe ('.sort') do
+# describe ('.sort') do
+#   it("is empty")do
+#   album2 = Album.new("test", nil, "1990", "blues", "bill")
+#   album2.save()
+#   album = Album.new("Giant Steps", nil, "1990", "blues", "bill")
+#   album.save()
+#   expect(Album.sort()).to(eq([]))
+# end
+# end
+
+describe ('.sold') do
   it("is empty")do
-  album2 = Album.new("test", nil, "1990", "blues", "bill")
-  album2.save()
   album = Album.new("Giant Steps", nil, "1990", "blues", "bill")
   album.save()
-  expect(Album.sort()).to(eq([]))
+  album.sold
+  expect(Album.sold_albums()).to(eq([]))
 end
 end
 #
