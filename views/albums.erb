@@ -12,7 +12,7 @@
   <p>There are currently no records to display.</p>
 <% end %>
 
-<form action="/albums" method="get">
+<form action="/albums/" method="get">
   <div class="form-group">
     <label for="name">Search by Album</label>
     <input id="name" name="name" class="form-control" type="text">
@@ -21,7 +21,12 @@
 </form>
 
 <a href="/albums/new">Add a new album</a>
-
+<% counter = 0 %>
+<% @sort.each do |album| %>
+    <li><a href="/albums/<%= @sort[counter].id %>"><%=@sort[counter].name%></a></li>
+    <% counter += 1 %>
+  <% end %>
+<h1>"Non Sorted"</h1>
 <% @albums.each do |album| %>
     <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
   <% end %>

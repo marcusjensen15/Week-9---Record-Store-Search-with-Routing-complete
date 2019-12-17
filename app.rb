@@ -10,6 +10,7 @@ get('/test/') do
 end
 
 get('/') do
+  @sort = Album.sort
   @albums = Album.all
   erb(:albums)
 end
@@ -19,6 +20,7 @@ get('/albums') do
     @album = Album.search(params[:name])
     erb(:album)
 else
+  @sort = Album.sort
   @albums = Album.all
   erb(:albums)
   end
@@ -53,12 +55,11 @@ post('/albums') do
   album = Album.new(name, nil, year, genre, artist)
   album.save()
   @albums = Album.all()
+  @sort = Album.sort
   erb(:albums)
 end
 
-get('/albums/:id/edit') do
-  "This will take us to a page with a form for updating an album with an ID of #{params[:id]}."
-end
+
 
 patch('/albums/:id') do
   @album = Album.find(params[:id].to_i())

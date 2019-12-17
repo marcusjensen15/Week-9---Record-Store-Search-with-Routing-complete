@@ -18,9 +18,22 @@ require('project')
 # end
 #   describe ('.all') do
 #     it("is empty")do
+#     album = Album.new("Giant Steps", nil, "1990", "blues", "bill")
+#     album.save()
+#     album2 = Album.new("test", nil, "1990", "blues", "bill")
+#     album2.save()
 #     expect(Album.all()).to(eq([]))
 #   end
 # end
+describe ('.sort') do
+  it("is empty")do
+  album2 = Album.new("test", nil, "1990", "blues", "bill")
+  album2.save()
+  album = Album.new("Giant Steps", nil, "1990", "blues", "bill")
+  album.save()
+  expect(Album.sort()).to(eq([]))
+end
+end
 #
 # describe('.clear') do
 #     it("clears all albums") do
@@ -42,15 +55,15 @@ require('project')
 #     end
 #   end
 
-  describe('.search') do
-    it("search an album by name") do
-      album = Album.new("Giant Steps", nil, "1990", "blues", "bill")
-      album.save()
-      album2 = Album.new("test", nil, "1990", "blues", "bill")
-      album2.save()
-      expect(Album.search("Giant Steps")).to(eq("Giant Steps"))
-    end
-  end
+  # describe('.search') do
+  #   it("search an album by name") do
+  #     album = Album.new("Giant Steps", nil, "1990", "blues", "bill")
+  #     album.save()
+  #     album2 = Album.new("test", nil, "1990", "blues", "bill")
+  #     album2.save()
+  #     expect(Album.search("Giant Steps")).to(eq("Giant Steps"))
+  #   end
+  # end
 
   # describe('#delete') do
   #     it("deletes an album by id") do

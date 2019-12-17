@@ -16,6 +16,11 @@ class Album
     @@albums.values()
   end
 
+  def self.sort
+    @@albums.values.sort_by { | val| val.name}
+
+  end
+
   def save
     @@albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist)
   end
